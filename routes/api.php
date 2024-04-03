@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\V1\FamilyController;
+use App\Http\Controllers\V1\GenderController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -12,4 +13,5 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix('v1')->group(function () {
     Route::apiResource('/families', FamilyController::class);
+    Route::apiResource('/genders', GenderController::class);
 });
