@@ -19,12 +19,10 @@ class FishResource extends JsonResource
             'id' => $this->id,
             'family' => [
                 $this->family_id, 
-                $this->family->name
-            ],
+                $this->family->name],
             'gender' => [
                 $this->gender_id, 
-                $this->gender->name
-            ],
+                $this->gender->name],
             'name'  => $this->name,
             'scientific_name' => $this->scientific_name,
             'size' => $this->size,
