@@ -13,6 +13,19 @@ return new class extends Migration
     {
         Schema::create('fish', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('family_id');
+            $table->unsignedBigInteger('gender_id');
+            $table->string('name', 100);
+            $table->string('scientific_name')->unique();
+            $table->float('size');
+            $table->integer('longevity');
+            $table->text('description');
+            $table->string('temper',100);
+            $table->text('photo');
+
+            $table->foreign('family_id')->references('id')->on('families')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('gender_id')->references('id')->on('genders')->onUpdate('cascade')->onDelete('cascade');
+
             $table->timestamps();
         });
     }
