@@ -11,7 +11,7 @@ class UpdateFishRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,14 @@ class UpdateFishRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name' => ['required', 'string', 'unique:fish,name,' . $this->fish->id],
+            'scientific_name' => ['required', 'string', 'unique:fish,scientific_name,' . $this->fish->id],
+            'size' => ['required', 'min:0', 'numeric'],
+            'longevity' => ['required', 'min:1', 'max:100', 'integer'],
+            'description' => ['required', 'string'],
+            'temper' => ['required'],
+            'family_id' => ['required', 'exists:families,id'],
+            'gender_id' => ['required', 'exists:genders,id'],
         ];
     }
 }

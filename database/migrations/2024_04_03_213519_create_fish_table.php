@@ -21,7 +21,7 @@ return new class extends Migration
             $table->integer('longevity');
             $table->text('description');
             $table->string('temper',100);
-            $table->text('photo');
+            $table->text('photo')->nullable();
 
             $table->foreign('family_id')->references('id')->on('families')->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('gender_id')->references('id')->on('genders')->onUpdate('cascade')->onDelete('cascade');

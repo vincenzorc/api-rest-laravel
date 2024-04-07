@@ -20,4 +20,5 @@ Route::prefix('v1')->group(function () {
     Route::apiResource('/diets', DietController::class);
     Route::apiResource('/countries', CountryController::class);
     Route::apiResource('/fish', FishController::class);
+    Route::post('/fish/{fish}',  [FishController::class, 'updatePhoto']);
 });
