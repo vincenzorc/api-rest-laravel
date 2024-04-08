@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\V1\AquariumController;
 use App\Http\Controllers\V1\CountryController;
 use App\Http\Controllers\V1\DietController;
@@ -13,9 +14,14 @@ use Illuminate\Support\Facades\Route;
     return $request->user();
 })->middleware('auth:sanctum'); */
 
-//Route::apiResource('/families', FamilyController::class);
+Route::post('/register', [AuthController::class, 'register']);
+Route::post('/login', [AuthController::class, 'login']);
 
-Route::prefix('v1')->group(function () {
+Route::middleware(["auth:sanctum"])->group(function () {
+    Route::post('/logout', [AuthController::class, 'logout']);
+});
+
+Route::prefix('v1')->middleware(['auth:sanctum'])->group(function () {
     Route::apiResource('/families', FamilyController::class);
     Route::apiResource('/genders', GenderController::class);
     Route::apiResource('/diets', DietController::class);
