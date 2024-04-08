@@ -45,6 +45,10 @@ class FishController extends Controller
             $fish->countries()->attach($countryId);
         }
 
+        foreach ($request->diets as $dietId){
+            $fish->diets()->attach($dietId);
+        }
+
         return new FishResource($fish);
     }
 
@@ -90,6 +94,10 @@ class FishController extends Controller
 
         foreach ($request->countries as $countryId){
             $fish->countries()->sync($countryId);
+        }
+
+        foreach ($request->diets as $dietId){
+            $fish->diets()->sync($dietId);
         }
 
         return new FishResource($fish);

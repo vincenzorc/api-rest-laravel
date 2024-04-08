@@ -30,7 +30,8 @@ class UpdateFishRequest extends FormRequest
             'temper' => ['required'],
             'family_id' => ['required', 'exists:families,id'],
             'gender_id' => ['required', 'exists:genders,id'],
-            'countries' => ['required', 'array']
+            'countries' => ['required', 'array'],
+            'diets' => ['required', 'array']
         ];
     }
 }

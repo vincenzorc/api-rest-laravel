@@ -32,6 +32,7 @@ class FishResource extends JsonResource
             'description' => $this->description,
             'temper' => $this->temper,
             'countries' => $this->countries,
+            'diets' => $this->diets,
             'photo' => $this->photo
         ];
     }
