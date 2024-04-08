@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\V1\AquariumController;
 use App\Http\Controllers\V1\CountryController;
 use App\Http\Controllers\V1\DietController;
 use App\Http\Controllers\V1\FamilyController;
@@ -21,4 +22,5 @@ Route::prefix('v1')->group(function () {
     Route::apiResource('/countries', CountryController::class);
     Route::apiResource('/fish', FishController::class);
     Route::post('/fish/{fish}',  [FishController::class, 'updatePhoto']);
+    Route::apiResource('/aquarium', AquariumController::class);
 });

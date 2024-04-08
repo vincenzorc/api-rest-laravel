@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Fish extends Model
 {
@@ -41,5 +42,10 @@ class Fish extends Model
     public function diets(): BelongsToMany
     {
         return $this->belongsToMany(Diet::class);
+    }
+
+    public function aquarium(): HasOne
+    {
+        return  $this->hasOne(Aquarium::class, 'fish_id');
     }
 }
