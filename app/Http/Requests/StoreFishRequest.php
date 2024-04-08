@@ -31,6 +31,7 @@ class StoreFishRequest extends FormRequest
             'family_id' => ['required', 'exists:families,id'],
             'gender_id' => ['required', 'exists:genders,id'],
             'photo' => ['required', 'image'],
+            'countries' => ['required', 'array']
         ];
     }
 }

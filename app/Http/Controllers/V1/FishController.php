@@ -29,9 +29,7 @@ class FishController extends Controller
         $photo = $request->file('photo')->store('public/images');
         $url = Storage::url($photo);
 
-        $fish = new Fish();
-
-        return new FishResource($fish->create([
+        $fish = Fish::create([
             'name' => $request->name,
             'scientific_name' => $request->scientific_name,
             'size' => $request->size,
@@ -41,7 +39,13 @@ class FishController extends Controller
             'family_id' => $request->family_id,
             'gender_id' => $request->gender_id,
             'photo' => $url
-        ]));
+        ]);
+
+        foreach ($request->countries as $countryId){
+            $fish->countries()->attach($countryId);
+        }
+
+        return new FishResource($fish);
     }
 
     /**
@@ -83,6 +87,10 @@ class FishController extends Controller
            'gender_id' => $request->gender_id,
            'photo' => $fish->photo
         ]);
+
+        foreach ($request->countries as $countryId){
+            $fish->countries()->sync($countryId);
+        }
 
         return new FishResource($fish);
     }
